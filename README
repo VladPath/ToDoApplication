@@ -1,0 +1,7 @@
+запуск приложения в консоли env
+env\Scripts\activate.bat - для Windows;
+source env/bin/activate - для Linux и MacOS.
+
+ $ cd do_list 
+ $ python3 manage.py runserver
+
