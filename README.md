@@ -1,5 +1,8 @@
 https://github.com/VladPath/ToDoApplication/assets/146530026/4c685f74-063e-49c7-80c3-58593815cf52
 
+https://github.com/VladPath/ToDoApplication/assets/146530026/9817e80d-5180-48c0-98dd-e801ef206f50
+
+
 запуск приложения в консоли env
 
 env\Scripts\activate.bat - для Windows
