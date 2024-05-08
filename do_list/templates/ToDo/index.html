@@ -5,15 +5,18 @@
 
 <div style="margin-top: 50px;" class="ui container ">
 
-    <h1 class="ui center aligned header ">Запись задач</h1>
+    <h1 class="ui center aligned header ">Личный список дел!</h1>
     {%if all_todo_in_work > 10%}
-    <h4 >Все задачи в работе 10 </h4>
+    <meta http-equiv="refresh" content="0.1">
+
+    <h4>Все задачи в работе {{all_todo_in_work}}  </h4>
     <h4 >Все завершенные задачи {{all_end_todo}} </h4>
     {%else%}
     <h4 >Все задачи в работе {{all_todo_in_work}} </h4>
     <h4 >Все завершенные задачи {{all_end_todo}} </h4>
-    {%endif%}
-        <div class="ui">
+     {%endif%} 
+    <a class="ui negative basic button "href="{% url 'clear_data_tasks'%}">Очистить историю задач</a>
+        <div style="margin-top: 10px;"class="ui">
             <div>
                 <form class="ui form " action="{% url 'add' %}" method="post">
                     {% csrf_token %}
@@ -24,7 +27,7 @@
                     <button class="ui blue button" type="submit"action="{% url 'add' %}">Добавить 1 задачу!</button>
                 </form>
             </div>
-            <div>
+            <div style="margin-top: 10px;">
                 <form class="ui form " action="{% url 'add_five' %}" method="post">
                     {% csrf_token %}
                     <div class="field ">
@@ -37,6 +40,7 @@
                     </div>
                     <button class="ui blue button" type="submit"action="{% url 'add_five' %}">Добавить 5 задач!</button>
                 </form>
+
             </div>
         </div>
 {%for todo in ToDo%}

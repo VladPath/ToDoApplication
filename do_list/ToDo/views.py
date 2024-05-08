@@ -9,12 +9,6 @@ from .models import Task, TaskStats
 
 MAX_TASKS = 10
 
-
-def earliest_object_delete(x):
-    earliest_object = x
-    earliest_object.delete()
-    return redirect('index')
-    
 # Create your views here.
 def index(request):
     todos = Task.objects.all()
@@ -22,12 +16,14 @@ def index(request):
     all_end_todo = TaskStats.objects.latest('id').closed_tasks
     
     if all_todo_in_work > MAX_TASKS:
-        earliest_object = Task.objects.earliest('created_at')
-        earliest_object.delete()
-        latest_object = TaskStats.objects.latest('id')
-        latest_object.closed_tasks += 1
-        latest_object.open_tasks -= 1
-        latest_object.save()
+        dif = all_todo_in_work - MAX_TASKS
+        for i in range(dif):
+            earliest_object = Task.objects.earliest('created_at')
+            earliest_object.delete()
+            latest_object = TaskStats.objects.latest('id')
+            latest_object.closed_tasks += 1
+            latest_object.open_tasks -= 1
+            latest_object.save()
         
     return render(request, 'ToDo/index.html', {'ToDo':todos, 
                                                'title':'Главная страница',
@@ -78,6 +74,18 @@ def delete(request, todo_id):
     
     todo.delete()
     return redirect('index')
+
+def clear_data_tasks(request):
+    latest_object = TaskStats.objects.latest('id')
+    latest_object.open_tasks = 0
+    latest_object.closed_tasks = 0
+    latest_object.save()
+    todo = Task.objects.all()
+    todo.delete()
+    return redirect('index')
+
+        
+    
 
 
 
