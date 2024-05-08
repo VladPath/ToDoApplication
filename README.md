@@ -1,5 +1,5 @@
 
-https://github.com/VladPath/ToDoApplication/assets/146530026/ba7868b9-1eef-4fe1-9d1b-f40d08976498
+https://github.com/VladPath/ToDoApplication/assets/146530026/4dc13c88-e183-4a40-ab40-16ee89668e37
 
 
 запуск приложения в консоли env
